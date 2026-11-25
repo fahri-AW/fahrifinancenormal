@@ -639,6 +639,20 @@
       .filters .filter-control { min-width: 0; }
     }
 
+  
+    @media print {
+      .sidebar, .mobile-nav, .no-print, .toast, .form-panel { display: none !important; }
+      .main { width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      body { background: #fff !important; }
+      .balance-panel { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .panel, .chart-card, .metric { break-inside: avoid; box-shadow: none; }
+      .table-wrap { overflow: visible; }
+      table { min-width: 100%; }
+      th, td { padding: 7px; font-size: 9px; }
+      .chart-grid { grid-template-columns: 1.4fr 1fr; }
+      .chart-card-wide { grid-row: span 2; }
+    }
+
   </style>
 </head>
 <body>
