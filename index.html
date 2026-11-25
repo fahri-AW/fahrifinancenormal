@@ -644,6 +644,17 @@
         return year + "-" + month + "-" + day;
       }
 
+      function isValidDate(value) {
+        if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+        const [year, month, day] = value.split("-").map(Number);
+        const date = new Date(0);
+        date.setFullYear(year, month - 1, day);
+        date.setHours(0, 0, 0, 0);
+        return date.getFullYear() === year &&
+          date.getMonth() === month - 1 &&
+          date.getDate() === day;
+      }
+
       function formatCurrency(value) {
         return currency.format(value);
       }
@@ -678,7 +689,7 @@
             keterangan: typeof item.keterangan === "string" ? item.keterangan : "",
             jumlah: Number(item.jumlah)
           })).filter(item =>
-            /^\d{4}-\d{2}-\d{2}$/.test(item.tanggal) &&
+            /^\d{4}-\d{2}-\d{2}$/isValidDate(item.tanggal) &&
             item.keterangan.trim() &&
             Number.isSafeInteger(item.jumlah) &&
             item.jumlah > 0
@@ -1136,7 +1147,7 @@
           const description = byId("descriptionInput").value.trim();
           const amount = Number(byId("amountInput").value);
 
-          if (!date || !description || description.length > 120 ||
+          if (!isValidDate(date) || !description || description.length > 120 ||
               !Number.isSafeInteger(amount) || amount <= 0) {
             showToast("Periksa tanggal, keterangan, dan jumlah transaksi.");
             return;
