@@ -54,6 +54,7 @@
       padding: 10px 14px; border-radius: 8px; box-shadow: var(--shadow);
     }
     .skip-link:focus { transform: translateY(0); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
     .shell { min-height: 100vh; }
     .sidebar {
@@ -196,12 +197,13 @@
     .chart-heading h3 { margin: 0; color: var(--navy); font-size: 13px; }
     .chart-heading p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
     .select-control {
-      min-height: 40px; padding: 0 10px; border: 1px solid var(--line);
+      min-height: 44px; padding: 0 10px; border: 1px solid var(--line);
       border-radius: 7px; background: white; color: var(--ink); font-size: 11px;
     }
     .chart-stage { position: relative; height: 245px; min-width: 0; }
     .chart-stage.compact { height: 185px; }
     .chart-stage canvas { display: block; width: 100% !important; height: 100% !important; }
+    .chart-stage canvas[hidden], .chart-state[hidden] { display: none !important; }
     .chart-state {
       display: grid; place-items: center; min-height: 100%;
       padding: 16px; color: var(--muted); text-align: center;
@@ -283,7 +285,7 @@
     .category-label { color: #526176; }
     .row-actions { display: flex; gap: 5px; }
     .small-action {
-      min-width: 44px; min-height: 36px; padding: 0 8px;
+      min-width: 44px; min-height: 44px; padding: 0 8px;
       border: 1px solid var(--line); border-radius: 6px;
       background: white; color: var(--blue); font-size: 10px; font-weight: 700;
     }
@@ -458,7 +460,6 @@
                 <h3>Pergerakan bulanan</h3>
                 <p>Pemasukan dibandingkan dengan pengeluaran</p>
               </div>
-              <label class="sr-only" for="chartRange"></label>
               <select class="select-control" id="chartRange" aria-label="Rentang grafik arus kas">
                 <option value="6">6 bulan</option>
                 <option value="12" selected>12 bulan</option>
