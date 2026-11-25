@@ -782,7 +782,7 @@
         return {
           responsive: true,
           maintainAspectRatio: false,
-          animation: { duration: 220 },
+          animation: { duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 220 },
           plugins: {
             legend: {
               position: "bottom",
