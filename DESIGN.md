@@ -1,38 +1,46 @@
-# FinancePro Design Direction
+# FinancePro Design System
 
 ## Product identity
-FinancePro is a personal finance ledger for recording daily income and expenses. The primary job is to help a person understand cash flow, identify spending patterns, and keep a reliable transaction history.
+FinancePro is a personal finance workspace for recording income and expenses, understanding cash flow, and reviewing a reliable transaction history.
 
-## Existing visual direction retained
-The current repository establishes a restrained cobalt and navy identity. Keep that identity rather than replacing it with a generic theme.
+## Visual direction: grounded clarity
+The interface uses an editorial, nature-inspired visual language. Deep evergreen communicates stability. Soft mineral green and warm off-white create a calm working surface. A restrained lime accent highlights the brand and active navigation. Income and expense colors remain semantic.
 
-- Core: cobalt blue `#3157D5` for primary actions and active navigation.
-- Structure: deep navy `#172554` for headings and the main balance surface.
-- Neutral: cool near-white canvas `#F5F7FB`, white work surfaces, and slate text.
-- Semantic: green for income and red for expenses. Never use these colors as decoration.
-- Typography: system sans-serif for familiar, fast reading. Tabular numerals for money.
-- Shape: modest corner radii. Use borders for grouping and shadows only where a surface needs elevation.
+### Core tokens
+| Token | Value | Purpose |
+|---|---|---|
+| Evergreen | `#12372F` | Brand structure, sidebar, balance panel |
+| Forest | `#1D594B` | Primary action and active state |
+| Leaf | `#C9EF75` | Brand mark and restrained accent |
+| Canvas | `#F3F4EE` | Main page background |
+| Surface | `#FFFEFA` | Cards, forms, and tables |
+| Ink | `#1C302B` | Primary text |
+| Muted | `#60716A` | Supporting text |
+| Line | `#E3E8DF` | Borders and separators |
+| Income | `#18734E` | Income values |
+| Expense | `#B54747` | Expense values |
 
-## Composition
-- Desktop navigation groups the real destinations: overview, transactions, and reports.
-- Mobile navigation becomes a labeled bottom bar with safe-area spacing.
-- The opening view prioritizes the current balance and period cash flow.
-- Transaction entry and the ledger remain close to the analysis, because recording and reviewing are the core tasks.
-- Charts must reflect actual saved transactions. Empty, loading, and error states must explain what happened and what the user can do next.
+Typography uses the system sans-serif stack for reliable rendering. Financial values use tabular numerals. Corners are moderately rounded, borders are quiet, and shadows only distinguish elevated surfaces.
 
-## Interaction principles
-- Every control has a real action, a visible focus state, and a touch target of at least 44px.
-- Transaction descriptions are rendered as text, never interpreted as HTML.
-- Existing LocalStorage records under `financeProData` remain readable.
-- Excel export is a user-triggered copy of the current local data, not a live synchronized workbook.
+## Layout and hierarchy
+- A dark evergreen sidebar anchors desktop navigation.
+- The opening view uses a clear editorial heading, a high-contrast balance panel, and three compact period metrics.
+- The balance panel is the primary focal point. Its supporting totals remain visible without competing with the balance.
+- The cash-flow line chart receives the largest chart area. Composition and category charts remain secondary.
+- Transaction entry and the ledger use consistent surface, field, and table patterns.
+- Mobile replaces the sidebar with a labeled bottom navigation bar and safe-area spacing.
+- At narrow widths, charts and forms become single-column layouts. Header actions remain easy to reach.
 
-## Design Read
-ENERGY 2 / RHYTHM 3 / MOTION 1.
+## Interaction and accessibility
+- All visible controls retain their existing actions and use touch targets of at least 44px.
+- Semantic HTML, labels, skip navigation, visible focus, keyboard access, and reduced-motion support are required.
+- Empty, error, and success states explain what happened and what the user can do.
+- Transaction descriptions render as text, never as HTML.
+- Existing LocalStorage records under `financeProData` remain compatible.
+- Excel export remains a user-triggered file download, not a live synchronized workbook.
 
-Energy stays calm because financial records need trust and legibility. Rhythm varies between the balance summary, a dominant cash-flow chart, compact category analysis, the entry form, and the ledger. Motion is limited to short state feedback and respects reduced-motion preferences.
-
-## Visual decisions and purpose
-- The navy balance surface is the primary focal point for the user's main decision: whether recorded cash flow is positive.
-- Green and red are reserved for income and expense values so their meaning remains consistent.
-- A line chart shows change over time; a doughnut shows the split between income and expenses; a horizontal bar chart ranks expense categories.
-- The ledger uses aligned monetary values and restrained row separators to support scanning.
+## Design constraints
+- Do not use the lime accent as a general-purpose decoration.
+- Keep green and red reserved for meaningful financial states.
+- Avoid unnecessary animation, gradients, and ornamental charts.
+- Preserve legibility and the hierarchy of financial information across screen sizes.
