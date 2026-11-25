@@ -689,7 +689,7 @@
             keterangan: typeof item.keterangan === "string" ? item.keterangan : "",
             jumlah: Number(item.jumlah)
           })).filter(item =>
-            /^\d{4}-\d{2}-\d{2}$/isValidDate(item.tanggal) &&
+            isValidDate(item.tanggal) &&
             item.keterangan.trim() &&
             Number.isSafeInteger(item.jumlah) &&
             item.jumlah > 0
